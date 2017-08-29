@@ -33,6 +33,9 @@ df <- Reduce(function(...) merge(..., all=T, by = c('Country code','Country name
   pop <- read.csv(file.path('data', 'pop.csv'), check.names=F, strings=F)
   df <- merge(df, pop, by= c('Country code', 'Country name'), all=T)
 
+  gain <- read.csv(file.path('data', 'ndgain.csv'), check.names=F, strings=F)
+  df <- merge(df, gain, by= c('Country code', 'Country name'), all=T)
+
 # calculate overall TCI score
 
   g <- df[, grep('score', names(df))]

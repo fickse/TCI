@@ -5,38 +5,38 @@
 
 # minimum number of indicators a country must have to be included
 
-min.num.inds <- 7
+min.num.inds <- 6
 
 # chosen indicators
 
 indicators <- list(
 
   # Transboundary Water
-  "transboundary_water" = list( fname = "transboundary_water.csv"),
+  "Transboundary_Water" = list( fname = "transboundary_water.csv"),
 
   # Bilateral climate weighted FDI
-  "fdi" = list (fname = "fdi.csv"),
+  "FDI" = list (fname = "fdi.csv"),
   
   # Remittances
-  "remittances" = list (fname = "remittances.csv"),
+  "Remittances" = list (fname = "remittances.csv"),
 
   # Openness to asylum  
-  "asylum" = list (fname = "refugees.csv"),
+  "Asylum" = list (fname = "refugees.csv"),
   
   # Migration from climate vulnerable countries
-  "migration" = list (fname = "migration.csv"),
+  "Migration" = list (fname = "migration.csv"),
   
   # Trade openness
-  "trade_openness" = list (fname = "trade_openness.csv"),
+  "Trade_Openness" = list (fname = "trade_openness.csv"),
   
   # Cereal import dependency
-  "cereal" = list (fname = "cereal.csv", title = "Cereal Import Dependency"),
+  "Cereal_Imports" = list (fname = "cereal.csv", title = "Cereal Import Dependency"),
 
   # Embedded water risk
-  "water_risk" = list (fname = "embedded_water.csv"),
+  "Embedded_Water" = list (fname = "embedded_water.csv"),
 
   # KOF Globalization Index
-  "kof" = list (fname = "kof_globalization.csv")
+  "Globalization" = list (fname = "kof_globalization.csv")
 
 )
 
@@ -60,4 +60,17 @@ num.quantiles <- 10
     cut( rnk, bin.bounds , include.lowest =TRUE, labels = FALSE)
   
   }
+
+#####
+
+# Sensitivity analysis
+
+# possible values of minimum number of indicators
+v.min.inds <- c(7,6)
+
+# possible noise to add, as a percentage of range
+percent.error = c(15)
+
+# possible number of quantiles
+v.num.quantiles = c(5,10,15)
 
