@@ -10,6 +10,8 @@ now <- Sys.time()
 dname <- paste0( 'run_', strftime(now, format = "%Y%m%d"))
 outdir <- file.path( 'outputs', dname )
 dir.create(outdir)
+dir.create(file.path(outdir,'tables'))
+dir.create(file.path(outdir,'figures'))
 
 # view assumptions / parameters
 print(ls.str())
