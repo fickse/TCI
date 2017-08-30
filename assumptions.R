@@ -65,12 +65,7 @@ num.quantiles <- 10
 
 # Sensitivity analysis
 
-# possible values of minimum number of indicators
-v.min.inds <- c(7,6)
-
 # possible noise to add, as a percentage of range
 percent.error = c(15)
 
-# possible number of quantiles
-v.num.quantiles = c(5,10,15)
 

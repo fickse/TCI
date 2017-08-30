@@ -18,4 +18,13 @@ print(ls.str())
 
 source('code/0_getData.R')
 
-# 2. Analyses 
+# 2. summary maps and tables
+
+source('code/maps.R')
+
+# 3. Analyses 
+
+source('code/1_uncertainty.R')
+source('code/2_spatial_autocorrelation.R')
+source('code/3_cluster.R')
+
