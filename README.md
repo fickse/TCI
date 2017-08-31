@@ -1,6 +1,6 @@
 # TCI
 
-1. Clone git repo to local file system (git clone ...)
+1. Clone git repo to local file system (`git clone https://github.com/fickse/TCI.git`)
 2. open R
 3. run...
 ```
