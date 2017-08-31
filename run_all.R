@@ -5,7 +5,7 @@
 # get assumptions
 source('assumptions.R')
 
-# outputs directory (set to one per day!)
+# outputs directory (creates one per day!)
 now <- Sys.time()
 dname <- paste0( 'run_', strftime(now, format = "%Y%m%d"))
 outdir <- file.path( 'outputs', dname )
@@ -23,6 +23,7 @@ source('code/0_getData.R')
 # 2. summary maps and tables
 
 source('code/maps.R')
+source('code/tables.R')
 
 # 3. Analyses 
 
