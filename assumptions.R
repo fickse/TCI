@@ -69,3 +69,44 @@ num.quantiles <- 10
 percent.error = c(15)
 
 
+
+###########################
+# Alternative scoring function
+
+
+score2 <- function(values, bins){
+    
+    set.seed(1989)
+    
+    # apply a raw ranking of values
+    rnk <- rank(values , ties = 'min', na.last = 'keep')
+
+    # omit (and record position of) NA values
+    rnk <- na.omit(rnk)
+
+    # note: The ties = "min" parameter ensures that countries with the same
+    #       value receive the same rank.
+    #       The na.last='keep' maintains missing values in their proper place.
+    
+    # apply kmeans classification to rank levels to deal with duplicate values 
+    # K-means will find groupings which minimize 
+    clu <- kmeans(rnk, bins)$cluster
+    
+    
+    
+    #reassign cluster ids starting with the smallest group
+
+    a <- aggregate(rnk, by = list(clu), FUN=min, na.rm=TRUE)
+    out <- rank(a$x)[clu]
+    
+    for (i in attr(rnk, 'na.action')){
+    
+     out <- append(out, NA, after = i-1 )
+    
+    }
+    
+    out
+}
+
+
+

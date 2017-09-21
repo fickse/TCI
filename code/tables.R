@@ -15,7 +15,7 @@ tc <- d[order(d$TCI, decreasing = TRUE), c('Country name','Country code', 'TCI',
 nd <- d[order(d$GaIN, decreasing = TRUE), c('Country name','Country code', 'GaIN', 'UNREGION1')]
 
 
-write.csv(tc, file.path(outdir, 'top_scoring_TCI.csv'), row.names=F)
+write.csv(tc, file.path(outdir,'tables', 'top_scoring_TCI.csv'), row.names=F)
 
-write.csv(nd, file.path(outdir, 'top_scoring_NDGAIN.csv'), row.names=F)
+write.csv(nd, file.path(outdir, 'tables', 'top_scoring_NDGAIN.csv'), row.names=F)
 

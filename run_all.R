@@ -1,6 +1,6 @@
 # TCI index and analyses
 #
-#
+#  setwd('path/to/TCI')
 
 # get assumptions
 source('assumptions.R')
@@ -24,6 +24,7 @@ source('code/0_getData.R')
 
 source('code/maps.R')
 source('code/tables.R')
+source('code/figures.R')
 
 # 3. Analyses 
 
