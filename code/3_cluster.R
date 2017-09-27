@@ -57,8 +57,16 @@ plot(tree, labels = row.names(x), xlab= '', main = 'Upper 30% TCI', ylab = '', y
 #j <- rect.hclust(tree, k=nclust, border= rainbow(nclust))
 j <- rect.hclust(tree, k=nclust, border= colz[1:nclust])
 
+
+
 grps <- do.call(c,lapply(1:length(j), function(x) rep(x, length(j[[x]]))))
 ids <- do.call(c, j)
+
+# labels
+xs <-aggregate(1:length(grps), by = list(grps), FUN= mean)$x
+text(xs, par('usr')[3],   letters[1:nclust], pos =3, offset = .3)
+
+
 cols <- grps[match(names(clh), names(ids))]
 cols <- aggregate(clh, by = list(cols), unique)
 #cols <- rainbow(nclust)[order(cols$x)]
