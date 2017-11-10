@@ -1,6 +1,7 @@
-# make climate weighted indices
+# make climate weighted indices for FDI
 #
 library(data.table)
+
 # ndgain
 
 nd <- read.csv('data/ndgain.csv')
