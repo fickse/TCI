@@ -21,8 +21,8 @@ for(ctr in cc  ){
  x <- d[d$Country.code == ctr, ]
 
  cz <- grep('score', names(x))
- dat <- data.frame( count = unlist(x[,cz]), subcategory = gsub('_score', '', names(x)[cz]))
- dat$category <- cats[dat$subcategory]
+ dat <- data.frame( count = unlist(x[,cz]), subcategory = gsub('_score', '', names(x))[cz], stringsAsFactors=F)
+ dat$category <- cats[paste0(dat$subcategory, "_score")]
 
  dat <- na.omit(dat)
  # Add addition columns, needed for drawing with geom_rect.
@@ -47,4 +47,6 @@ p1 = ggplot(dat)+
 print(p1)
 
 dev.off()
+
+write.csv( dat, file.path(tdir, paste0(ctr, '_TCI_donut_data.csv')), row.names=F)
 }

@@ -30,6 +30,7 @@ fij = F[to_iso == 'FJI',],
 sen = F[to_iso == 'SEN',]
 )
 
+quant <- function(v){    as.numeric( cut ( v , quantile( v, seq(0, 1, length.out = 11), na.rm =TRUE)))}
 
 for(ctr in c('KEN', 'SWE', 'FJI', 'SEN')){
 
@@ -98,7 +99,14 @@ svg(file.path(tdir, paste0('migration_cwi_', ctr, '.svg')), height = 14, width =
 dev.off()
   
 shapefile(wr, file.path(tdir, paste0('migration_cwi_', ctr, '.shp')), overwrite=T) 
-write.csv(wr@data,file.path(tdir, paste0('migration_cwi_', ctr, '.csv')) )
+
+y <- x[which(x$n > 0),]
+y$ndQ <- quant(y$nd)
+y$migQ <- quant(y$PERC)
+y$ndxmigQ <- y$ndQ * y$migQ
+y <- y[base::order(y$PERC, decreasing =TRUE),]
+
+write.csv2(y,file.path(tdir, paste0('migration_cwi_', ctr, '.csv')), row.names=FALSE)
  
 }
 

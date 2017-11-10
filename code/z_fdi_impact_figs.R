@@ -28,6 +28,7 @@ fij = F[from_iso == 'FJI',],
 sen = F[from_iso == 'SEN',]
 )
 
+quant <- function(v){    as.numeric( cut ( v , quantile( v, seq(0, 1, length.out = 11), na.rm =TRUE), include.lowest =TRUE))}
 
 for(ctr in c('KEN', 'SWE', 'FJI', 'SEN')){
 
@@ -95,8 +96,15 @@ svg(file.path(tdir, paste0('FDI_cwi_', ctr, '.svg')), height = 14, width = 20)
 
 dev.off()
   
+y <- x[which(x$PERC > 0), ]
+y$TOTAL <- NULL
+y$ndQ <- quant(y$nd)
+y$fdiQ <- quant(y$PERC)
+y$ndxfdiQ <- y$ndQ * y$fdiQ
+y <- y[base::order(y$PERC, decreasing =TRUE),]
+
 shapefile(wr, file.path(tdir, paste0('FDI_cwi_', ctr, '.shp')), overwrite=T) 
-write.csv(wr@data,file.path(tdir, paste0('FDI_cwi_', ctr, '.csv')) )
+write.csv2(y,file.path(tdir, paste0('FDI_cwi_', ctr, '.csv')), row.names=FALSE )
  
 }
 
